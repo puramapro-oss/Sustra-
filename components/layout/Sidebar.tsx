@@ -22,6 +22,7 @@ import {
   Store,
   Calendar,
   Shield,
+  Mic,
 } from 'lucide-react';
 
 interface NavItem {
@@ -40,6 +41,7 @@ const navItems: NavItem[] = [
   { label: 'Autopilot', href: '/autopilot', icon: <Bot size={20} /> },
   { label: 'Concours', href: '/contests', icon: <Trophy size={20} /> },
   { label: 'Parrainage', href: '/referrals', icon: <Users size={20} /> },
+  { label: 'Influenceur', href: '/influencer', icon: <Mic size={20} /> },
   { label: 'Marketplace', href: '/marketplace', icon: <Store size={20} /> },
   { label: 'Aide', href: '/help', icon: <HelpCircle size={20} /> },
   { label: 'Paramètres', href: '/settings', icon: <Settings size={20} /> },

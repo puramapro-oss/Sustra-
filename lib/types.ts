@@ -704,3 +704,120 @@ export interface StyleProfile {
     estimated_viral_score: number;
   }>;
 }
+
+// ============================================================================
+// Influencer Types
+// ============================================================================
+
+export interface InfluencerProfile {
+  id: string;
+  user_id: string;
+  display_name: string;
+  platform: string;
+  channel_url: string | null;
+  custom_link_slug: string;
+  stripe_connect_id: string | null;
+  bank_rib: string | null;
+  bank_iban: string | null;
+  bank_bic: string | null;
+  payout_method: 'stripe' | 'bank_transfer';
+  contract_start: string | null;
+  contract_end: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface InfluencerClick {
+  id: string;
+  influencer_id: string;
+  ip_hash: string | null;
+  user_agent: string | null;
+  referrer_url: string | null;
+  country: string | null;
+  device_type: string | null;
+  clicked_at: string;
+}
+
+export interface InfluencerConversion {
+  id: string;
+  influencer_id: string;
+  user_id: string | null;
+  click_id: string | null;
+  conversion_type: 'signup' | 'subscription';
+  subscription_plan: string | null;
+  subscription_amount: number | null;
+  stripe_subscription_id: string | null;
+  converted_at: string;
+}
+
+export interface InfluencerEarning {
+  id: string;
+  influencer_id: string;
+  type: 'commission_standard' | 'milestone_bonus' | 'recurring_monthly';
+  amount: number;
+  source_conversion_id: string | null;
+  period_month: string | null;
+  status: string;
+  contract_id: string | null;
+  created_at: string;
+  paid_at: string | null;
+}
+
+export interface InfluencerContract {
+  id: string;
+  influencer_id: string;
+  start_date: string;
+  end_date: string;
+  commission_rate: number;
+  status: 'active' | 'completed' | 'cancelled';
+  total_earned: number;
+  payout_status: string;
+  payout_date: string | null;
+  created_at: string;
+}
+
+// ============================================================================
+// Commission & Referral Enhanced Types
+// ============================================================================
+
+export interface Commission {
+  id: string;
+  referral_id: string | null;
+  beneficiary_id: string;
+  type: 'first_payment_50pct' | 'recurring_10pct' | 'milestone_bonus_30pct' | 'contest_reward';
+  amount: number;
+  currency: string;
+  status: 'pending' | 'approved' | 'paid' | 'failed';
+  stripe_transfer_id: string | null;
+  period_start: string | null;
+  period_end: string | null;
+  created_at: string;
+  paid_at: string | null;
+}
+
+export interface ContestPrize {
+  id: string;
+  contest_result_id: string;
+  user_id: string;
+  rank: number;
+  prize_amount: number;
+  prize_percentage: number;
+  status: string;
+  paid_at: string | null;
+  created_at: string;
+}
+
+export interface ConnectedAccount {
+  id: string;
+  user_id: string;
+  platform: string;
+  platform_user_id: string | null;
+  access_token: string | null;
+  refresh_token: string | null;
+  token_expires_at: string | null;
+  username: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}

@@ -111,6 +111,60 @@ export async function GET() {
       ? prizes.reduce((sum, p) => sum + (p.amount || 0), 0)
       : 0;
 
+    // Influencer stats
+    const { count: totalInfluencers } = await admin
+      .from('influencer_profiles')
+      .select('*', { count: 'exact', head: true });
+
+    const { data: influencerClicks } = await admin
+      .from('influencer_clicks')
+      .select('id', { count: 'exact', head: true });
+    const totalInfluencerClicks = influencerClicks?.length || 0;
+
+    const { data: influencerConversions } = await admin
+      .from('influencer_conversions')
+      .select('id', { count: 'exact', head: true });
+    const totalInfluencerConversions = influencerConversions?.length || 0;
+
+    const { data: influencerEarnings } = await admin
+      .from('influencer_earnings')
+      .select('amount');
+    const totalInfluencerEarnings = influencerEarnings
+      ? influencerEarnings.reduce((sum, e) => sum + (e.amount || 0), 0)
+      : 0;
+
+    // Commission stats
+    const totalCommissionsPaid = commissions
+      ? commissions
+          .filter((c) => c.status === 'paid')
+          .reduce((sum, c) => sum + (c.amount || 0), 0)
+      : 0;
+
+    // Monthly revenue data (last 6 months)
+    const monthlyRevenue: { month: string; revenue: number }[] = [];
+    for (let i = 5; i >= 0; i--) {
+      const date = new Date();
+      date.setMonth(date.getMonth() - i);
+      const startOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+      const endOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0, 23, 59, 59);
+
+      const { data: monthSubs } = await admin
+        .from('subscriptions')
+        .select('plan')
+        .eq('status', 'active')
+        .lte('created_at', endOfMonth.toISOString());
+
+      const planPrices: Record<string, number> = { starter: 9, creator: 29, empire: 99 };
+      const monthMrr = monthSubs
+        ? monthSubs.reduce((sum: number, s: Record<string, unknown>) => sum + (planPrices[s.plan as string] || 0), 0)
+        : 0;
+
+      monthlyRevenue.push({
+        month: startOfMonth.toISOString().slice(0, 7),
+        revenue: monthMrr,
+      });
+    }
+
     // MRR calculation
     const planPrices: Record<string, number> = {
       starter: 29,
@@ -130,6 +184,7 @@ export async function GET() {
       totalWalletBalance,
       totalCommissions,
       pendingCommissions,
+      totalCommissionsPaid,
       recentSignups: recentSignups || 0,
       recentUsers: recentUsers || [],
       totalPrizes,
@@ -138,6 +193,16 @@ export async function GET() {
       churnRate: totalUsers && totalUsers > 0
         ? (((totalUsers - activeSubscriptions) / totalUsers) * 100).toFixed(1)
         : '0',
+      influencerStats: {
+        totalInfluencers: totalInfluencers || 0,
+        totalClicks: totalInfluencerClicks,
+        totalConversions: totalInfluencerConversions,
+        totalEarnings: totalInfluencerEarnings,
+      },
+      contestStats: {
+        totalPrizePoolDistributed: totalPrizes,
+      },
+      monthlyRevenue,
     });
   } catch (error) {
     console.error('Admin stats error:', error);
