@@ -10,6 +10,7 @@ const nextConfig = {
       { protocol: "https", hostname: "i.ytimg.com" },
     ],
   },
+  transpilePackages: ['three'],
 };
 
 export default nextConfig;

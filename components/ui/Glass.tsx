@@ -10,7 +10,6 @@ interface GlassProps {
   className?: string;
   glow?: GlowColor;
   variant?: 'default' | 'hover' | 'active';
-  as?: React.ElementType;
 }
 
 const glowMap: Record<GlowColor, string> = {
@@ -31,18 +30,17 @@ export default function Glass({
   className,
   glow,
   variant = 'default',
-  as: Component = 'div',
 }: GlassProps) {
   return (
-    <Component
+    <div
       className={cn(
-        'bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl',
+        'bg-white/5 backdrop-blur-xl border border-white/[0.06] rounded-2xl',
         variant && variantMap[variant],
         glow && glowMap[glow],
         className
       )}
     >
       {children}
-    </Component>
+    </div>
   );
 }

@@ -15,7 +15,7 @@ import type {
 // ============================================================================
 
 export const COLORS = {
-  background: '#06050e',
+  background: '#0A0A0F',
   violet: '#8b5cf6',
   blue: '#3b82f6',
   cyan: '#06b6d4',

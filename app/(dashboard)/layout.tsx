@@ -77,7 +77,7 @@ export default function DashboardLayout({
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#06050e] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0A0A0F] flex items-center justify-center">
         <StarField />
         <div className="relative z-10 flex flex-col items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center animate-pulse">
@@ -104,7 +104,7 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#06050e] relative">
+    <div className="min-h-screen bg-[#0A0A0F] relative">
       <StarField />
 
       <Sidebar

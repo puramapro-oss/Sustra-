@@ -85,7 +85,7 @@ export default function BootScreen({ onComplete }: { onComplete?: () => void }) 
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[100] bg-[#06050e] flex flex-col items-center justify-center p-8"
+          className="fixed inset-0 z-[100] bg-[#0A0A0F] flex flex-col items-center justify-center p-8"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
         >

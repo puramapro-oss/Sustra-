@@ -31,5 +31,5 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     redirect('/dashboard');
   }
 
-  return <div className="min-h-screen bg-[#06050e]">{children}</div>;
+  return <div className="min-h-screen bg-[#0A0A0F]">{children}</div>;
 }

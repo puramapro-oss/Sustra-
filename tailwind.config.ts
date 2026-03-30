@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#06050e",
-        foreground: "#ffffff",
+        background: "#0A0A0F",
+        foreground: "#F8FAFC",
         sutra: {
-          bg: "#06050e",
+          bg: "#0A0A0F",
           violet: "#8b5cf6",
           blue: "#3b82f6",
           cyan: "#06b6d4",
@@ -22,19 +22,20 @@ const config: Config = {
         },
       },
       fontFamily: {
-        orbitron: ["'Orbitron'", "sans-serif"],
+        syne: ["'Syne'", "sans-serif"],
         exo2: ["'Exo 2'", "sans-serif"],
+        orbitron: ["'Orbitron'", "sans-serif"],
       },
       animation: {
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
         "star-twinkle": "star-twinkle 3s ease-in-out infinite",
-        "float": "float 6s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
         "slide-up": "slide-up 0.5s ease-out",
         "slide-down": "slide-down 0.5s ease-out",
         "fade-in": "fade-in 0.5s ease-out",
         "spin-slow": "spin 3s linear infinite",
-        "typing": "typing 0.8s steps(20) forwards",
-        "shimmer": "shimmer 2s infinite linear",
+        typing: "typing 0.8s steps(20) forwards",
+        shimmer: "shimmer 2s infinite linear",
         "pulse-border": "pulse-border 2s ease-in-out infinite",
       },
       keyframes: {

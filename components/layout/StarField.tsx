@@ -114,7 +114,7 @@ export default function StarField() {
       timeRef.current += 0.016;
 
       // Clear with bg color
-      ctx.fillStyle = '#06050e';
+      ctx.fillStyle = '#0A0A0F';
       ctx.fillRect(0, 0, width, height);
 
       // Draw nebulae
