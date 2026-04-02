@@ -1,0 +1,70 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(git:*)",
+      "Bash(vercel:*)",
+      "Bash(curl:*)",
+      "Bash(ssh:*)",
+      "Bash(sshpass:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(ls:*)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(chmod:*)",
+      "Bash(tsc:*)",
+      "Bash(playwright:*)",
+      "Bash(lhci:*)",
+      "Bash(brew:*)",
+      "Bash(pip:*)",
+      "Bash(expect:*)",
+      "Bash(pg_dump:*)",
+      "Bash(export:*)",
+      "Bash(cd:*)",
+      "Bash(pwd:*)",
+      "Bash(wc:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(sort:*)",
+      "Bash(tar:*)",
+      "Bash(gzip:*)",
+      "Bash(base64:*)",
+      "Bash(touch:*)",
+      "Bash(pkill:*)",
+      "Bash(docker:*)",
+      "Bash(PGPASSWORD:*)",
+      "Bash(SSHPASS:*)",
+      "Bash(stripe:*)",
+      "Bash(python3:*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "MultiEdit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "LS(*)"
+    ],
+    "deny": [],
+    "defaultMode": "bypassPermissions"
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  }
+}
